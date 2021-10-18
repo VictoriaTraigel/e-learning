@@ -1,0 +1,161 @@
+﻿@model LeshBrain.ViewModels.AccountSettingViewModel
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Аккаунты";
+}
+<div class="scroll-block text-center">
+    <div class="img-cont container">
+        <div class="row">
+            <div class="col">
+                <img src="@Model.edit.ImageUrl" alt="avatar" class="img-avatar rounded-circle">
+                @*<img src="/Content/UsersImage/spanch.jpg" alt="avatar" class="img-avatar rounded-circle">*@
+                <h2>@Model.edit.Name @Model.edit.Surname</h2>
+                @foreach (var rol in Model.changeRole.UserRoles)
+                {
+                    <span class="span-role">@rol </span>
+                }
+                @if (User.IsInRole("admin"))
+                {
+                    <form method="post" asp-controller="Account" asp-action="Delete" asp-route-id="@Model.edit.Id">
+                        <button class="btn btn-danger mt-3 rounded-pill">Удалить</button>
+                    </form>
+                }
+                else if (User.IsInRole("mentor"))
+                {
+                    <form method="post" asp-controller="Clients" asp-action="Success" asp-route-id="@Model.edit.Id">
+                        <button class="btn btn-primary mt-3 rounded-pill">Успехи</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="user-info  container">
+        <div class="row justify-content-center">
+            <div class="form-cont col-9">
+                <div class="mt-4">
+                    <h3>Персональная информация</h3>
+                </div>
+                <form method="post" asp-controller="Account" asp-action="Edit" class="form-edit">
+                    <div class="container-fluid">
+                        <input type="hidden" asp-for="edit.Id" />
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="emailInput" class="form-label">Email</label>
+                                    <input type="email" asp-for="edit.Email" class="tbhr-input form-control" id="emailInput" aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="nickInput" class="form-label">Телефон</label>
+                                    <input type="text" asp-for="edit.Phone" class="tbhr-input form-control" id="nickInput">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="nameInput" class="form-label">Имя</label>
+                                    <input type="text" asp-for="edit.Name" class="tbhr-input form-control" id="nameInput">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="surInput" class="form-label">Фамилия</label>
+                                    <input type="text" asp-for="edit.Surname" class="tbhr-input form-control" id="surInput">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="patronInput" class="form-label">Отчество</label>
+                                    <input type="text" asp-for="edit.Patronym" class="tbhr-input form-control" id="patronInput">
+                                </div>
+                            </div>
+                        </div>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <div class="row justify-content-center">
+                                <div class="col-md-5">
+                                    <button type="submit" class="tb-btn btn-edit btn rounded-pill">Изменить</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if (User.IsInRole("admin"))
+        {
+            <div class="row justify-content-center">
+                <div class="form-pas-div col-9">
+                    <div class="mt-5 mb-4 pas-div-h">
+                        <h3>Информация для входа</h3>
+                    </div>
+                    <form action="" class="form-pas">
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-5">
+                                    <div class="mb-3">
+                                        <label for="nickInpit" class="form-label">UserName</label>
+                                        <input type="text" class="tbhr-input form-control" id="nickInpit" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="mb-3">
+                                        <label for="pasInput" class="form-label">Пароль</label>
+                                        <input type="text" class="tbhr-input form-control" id="pasInput" disabled>
+                                    </div>
+                                    <div class="mb-3 hide">
+                                        <label for="pasInput" class="form-label">Повтор</label>
+                                        <input type="text" class="tbhr-input form-control" id="pasInput" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-2">
+                                    <div class="mb-3"><button type="button" class="tb-btn btn-edit btn-pas btn rounded-pill">Сменить пароль</button></div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="mb-3"><button type="button" class="tb-btn btn-edit btn-pas btn rounded-pill">Изменить</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-9">
+                    <div class="roles-div">
+                        <div class="mt-5 mb-4 pas-div-h">
+                            <h3>Роли</h3>
+                        </div>
+                        <div class="form-roles">
+                            <form asp-controller="Roles" asp-action="UpdateRole" method="POST">
+                                <input type="hidden" name="userid" value="@Model.edit.Id" />
+                                @foreach (var role in Model.changeRole.AllRoles)
+                                {
+                                    <input type="checkbox" name="roles" value="@role.Name" @(Model.changeRole.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") class="mb-4"><span class="roleName">@role.Name</span><br>
+                                }
+
+                                <button class="tb-btn btn-rol btn-edit btn-pas btn rounded-pill">Применить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @if (User.IsInRole("admin"))
+    {
+        <div class="user-role container">
+            <div class="row">
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

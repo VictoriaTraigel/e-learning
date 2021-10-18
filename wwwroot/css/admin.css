@@ -1,0 +1,343 @@
+.main-cont {
+    position: fixed;
+    height: 100%;
+}
+
+.main-row {
+    height: 100%;
+}
+
+.nav-col {
+    /* position: fixed; */
+    height: 100%;
+    background-color: #19d895;
+    /* background-color: rgb(44, 206, 149); */
+    color: white;
+    padding-right: 0px;
+}
+
+.brand-header {
+    /* border: 1px solid white; */
+    font-family: 'Kurale', serif;
+    font-weight: 800;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 0px;
+}
+
+.brand-icon {
+    height: 50px;
+    width: 120px;
+}
+
+.nav-list-admin a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.nav-admin-item {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 20px;
+    /* border: 1px solid white;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px; */
+}
+
+.nav-admin-link {
+    margin-left: 20px;
+}
+
+.active-item {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: white;
+}
+
+    .active-item a {
+        color: #19d895;
+    }
+
+.header-col {
+    /* border-bottom: 1px solid black; */
+    height: 100px;
+    box-shadow: 0 6px 5px -4px rgba(0, 0, 0, .2);
+}
+
+.bll-col {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.bll-row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.namePage {
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+.avatar {
+    height: 55px;
+}
+
+.div-account {
+    width: 200px;
+    /* border: 1px solid black; */
+    /* margin: 10px ; */
+}
+
+.content-block {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 244, 249);
+}
+
+.card-main {
+    /* border: 1px solid black; */
+    background-color: white;
+    margin-top: 50px;
+    height: 150px;
+}
+
+    .card-main:hover {
+        color: white;
+        background-color: #19d895;
+    }
+
+        .card-main:hover span {
+            color: white;
+        }
+
+.card-icon {
+    color: #19d895;
+    font-size: 4rem;
+}
+
+.card-row {
+    height: 100%;
+}
+
+.table-block {
+    background-color: white;
+    margin-top: 50px;
+}
+
+.tbh-div {
+    /* border: 1px solid black; */
+    width: 550px;
+}
+
+.tbh-div-form {
+    width: 100%;
+}
+
+.tb-header {
+    padding: 20px;
+}
+
+.tb-btn {
+    color: white;
+    background-color: #19d895;
+    width: 100px;
+}
+
+.badge {
+    height: 25px;
+}
+
+.tbh-input {
+    width: 200px;
+    height: 10px;
+}
+
+.tbhr-input:focus {
+    box-shadow: 0 0 10px rgb(38, 224, 156);
+    border-color: rgb(38, 224, 156);
+}
+
+.tbh-select {
+    width: 150px;
+}
+
+.img-avatar {
+    width: 200px;
+}
+
+.img-cont {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.span-role {
+    font-size: 24px;
+    font-weight: 400;
+    color: gray;
+}
+
+.user-info {
+    background-color: white;
+    height: 100%;
+}
+
+.form-cont {
+    /* border: 1px solid black; */
+}
+
+.form-edit {
+    margin-top: 40px;
+}
+
+.btn-edit {
+    height: 45px;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+.scroll-block {
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    /* position:inherit; */
+}
+
+.pas-div-h {
+    border-top: 1px solid #19d895;
+    padding-top: 20px;
+}
+
+.hide {
+    display: none;
+}
+
+.btn-pas {
+    height: 50px;
+    width: 150px;
+}
+
+.info-row:hover {
+    color: white;
+    background-color: #19d895;
+    cursor: pointer;
+}
+
+.roles-div {
+    /* margin-bottom: 40px; */
+}
+
+.del-btn {
+    /* margin-bottom: 200px; */
+}
+
+.roleName {
+    font-size: 22px;
+    margin-left: 20px;
+}
+
+.user-role {
+    background-color: white;
+    height: 500px;
+}
+
+.btn-rol {
+    margin-top: 20px;
+}
+
+
+
+.rolCol:hover {
+    color: white;
+    background-color: #19d895;
+    cursor: pointer;
+}
+
+.role-block {
+    background-color: white;
+}
+
+.filtroldiv {
+    width: 50%;
+}
+
+.filt-role {
+    height: 30px;
+}
+
+.form {
+    width: 200px;
+    padding: 10px;
+}
+
+.createrolediv {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.filtrLib {
+    margin: 10px;
+    padding: 20px;
+}
+
+.br-t {
+    border-top: 1px solid #19d895;
+}
+
+.book-card {
+    margin: 30px;
+    border: 1px solid #19d895;
+}
+
+.book-head {
+    color: #19d895;
+    font-size: 64px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.book-span {
+    font-weight: 600;
+    color: gray;
+}
+
+.book-content {
+    margin-bottom: 30px;
+}
+
+.book-card:hover {
+    color: white;
+    background-color: #19d895;
+    cursor: pointer;
+}
+
+.test-card:hover {
+    color: white;
+    background-color: #19d895;
+    cursor: pointer;
+}
+
+.test-span {
+    font-weight: 600;
+    color: gray;
+}
+
+.test-card {
+    margin: 30px;
+    border: 1px solid #19d895;
+}
+
+.test-head {
+    color: #19d895;
+    font-size: 64px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,70 @@
+﻿@model LeshBrain.ViewModels.RegisterViewModel;
+@{
+    Layout = null;
+    ViewData["Title"]= "Авторизация";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/regin.css">
+</head>
+<body>
+    <div class="container-fluid main-cont">
+        <div class="row align-items-center regin-row">
+            <div class="col d-none d-lg-block d-xl-block d-xxl-block left-container">
+                <img src="~/img/regpage/wave.png" alt="wave" class="wave">
+                <div class="text-center">
+                    <img src="~/img/regpage/mobile_user.svg" alt="mobile_user" class="img-mobile-user">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-content">
+                    <div class="text-center"><img src="~/img/regpage/avatar.svg" alt="avatar" class="user-avatar"></div>
+                    <h1 class="text-center">WELCOME</h1>
+                    <form method="post" id="mainForm" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl"> 
+                        <div class="form-floating form-input">
+                            <input type="text" class="form-control user-input" id="nickInput" placeholder="nickname" asp-for="UserName">
+                            <label for="nickInput" class="form-label">Nickname</label>
+                        </div>
+                        <div class="form-floating form-input">
+                            <input type="password" class="form-control user-input" id="passInput" placeholder="Password" asp-for="Password">
+                            <label for="passInput" class="form-label">Password</label>
+                        </div>
+                        <div id="reentryDiv" class="form-floating form-input">
+                            <input type="password" class="form-control user-input" id="reentryPassInput" placeholder="Re-entryPas" asp-for="PasswordConfirm">
+                            <label for="reentryPassInput" class="form-label">Re-entry password</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" id="btnSub" class="btn rounded-pill subbtn" aria-describedby="regHelpBlock">ВОЙТИ</button>
+                            <div id="regHelpBlock" class="form-text">Нет аккаунта? Давайте сделаем !</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script>
+        $('#regHelpBlock').on('click', function () {
+            $('#reentryDiv').slideToggle(200);
+            if ($(this).text() != 'Назад') $(this).text('Назад');
+            else $(this).text('Нет аккаунта? Давайте сделаем !');
+            if ($('#btnSub').text() != 'РЕГИСТРАЦИЯ')
+            {
+                $('#btnSub').text('РЕГИСТРАЦИЯ');
+                $('#mainForm').attr("action", "/Register");
+            }
+            else
+            {
+                $('#btnSub').text('ВОЙТИ');
+                $('#mainForm').attr("action", "/Login");
+            }
+        })
+    </script>
+</body>
+</html>

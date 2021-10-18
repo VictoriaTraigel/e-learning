@@ -1,0 +1,65 @@
+﻿@model LeshBrain.ViewModels.InfoBooksViewModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Библиотека";
+}
+<div class="scroll-block table-block container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form class="filtrLib" method="post" asp-controller="Library" asp-action="Add" enctype="multipart/form-data">
+                <div class="text-center">
+                    <h3>Добавление</h3>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-10 justify-content-center">
+                            <div class="m-3">
+                                <label for="name">Название</label>
+                                @if (User.IsInRole("mentor") || User.IsInRole("admin"))
+                                {
+                                    <input type="text" asp-for="Book.Name" class="form-control tbhr-input" id="name" placeholder="Название" required>
+                                }
+                                else
+                                {
+                                    <input type="text" asp-for="Book.Name" class="form-control tbhr-input disabled" id="name" placeholder="Название">
+                                }
+                            </div>
+                            <div class="m-3">
+                                <label for="opis">Описание</label>
+                                @if (User.IsInRole("mentor") || User.IsInRole("admin"))
+                                {
+                                    <textarea asp-for="Book.Description" name="" id="" cols="30" rows="4" itemid="opis" class="tbhr-input form-control" required></textarea>
+                                }
+                                else
+                                {
+                                    <textarea asp-for="Book.Description" name="" id="" cols="30" rows="4" itemid="opis" class="tbhr-input form-control disabled"></textarea>
+                                }
+                            </div>
+                            <div class="m-3">
+                                @if (User.IsInRole("mentor") || User.IsInRole("admin"))
+                                {
+                                    <label for="inputState">Новая категория.</label>
+                                    <select id="inputState" name="categoryID" asp-items="Model.ListCategory" class="form-control">
+                                    </select>
+                                }
+                            </div>
+                            <div class="m-3">
+                                @if (User.IsInRole("mentor") || User.IsInRole("admin"))
+                                {
+                                    <label for="file">Загрузить новый файл</label>
+                                    <input type="file" name="newFile" class="form-control" required/><br>
+                                }
+                            </div>
+                            @if (User.IsInRole("mentor") || User.IsInRole("admin"))
+                            {
+                                <div class="m-3 text-center">
+                                    <button type="submit" class="tb-btn btn rounded-pill">Создать</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

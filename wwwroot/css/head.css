@@ -1,0 +1,268 @@
+.header,footer
+{
+    background-color: rgb(25, 118, 210);
+}
+.header-color
+{
+    color: rgb(25, 118, 210);
+}
+.nav-link
+{
+    margin-left: 15px;
+    font-size: 18px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+.nav-link:hover
+{
+    border-bottom: 1px solid white;
+}
+.navbar-brand
+{
+    font-family: 'Kurale', serif;
+    font-size: 24px;
+}
+.reginbtn
+{
+    border-color: white;
+    color: white;
+    margin-left: 5px;
+}
+.reginbtn:hover
+{
+    border-color:rgb(25, 118, 210) ;
+    /* border-color: rgb(255, 216, 11); */
+    color: rgb(25, 118, 210);
+    /* color: rgb(255, 216, 11); */
+    background-color: white;
+}
+.promo
+{
+    background: url(../img/promo.png);
+    height: 800px;
+    width: 100%;
+}
+.promo-text-div
+{
+    margin-top: 250px;
+}
+.promo-text
+{
+    line-height: 1.5;
+}
+.why-lesh-head
+{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.why-lesh-text
+{
+    margin-top: 25px;
+}
+.why-lesh
+{
+    align-items: center;
+    text-align: center;
+}
+.hide
+{
+    display: none;
+}
+.promo-text-anim
+{
+    color: rgb(255, 216, 11);
+}
+.why-lesh-bigtext
+{
+    font-size: 23px;
+    font-family: 'Kurale', serif;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.why-lesh-last
+{
+    margin-bottom: 50px;
+}
+.footer
+{
+    height: 300px;
+    background-color: rgb(25, 118, 210);
+}
+.footer-col
+{
+    color: white;
+    border-bottom: 1px solid white;
+    margin-top: 50px;
+    padding-bottom: 15px;
+}
+.footer-col-sec
+{
+    color: white;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+.footer-list
+{
+    list-style-type: none;
+}
+.footer-li:hover
+{
+    color: white; 
+}
+.footer-li{
+    margin-top: 5px;
+}
+.foooter-li-link:hover
+{
+    color: rgb(255, 216, 11);
+}
+a 
+{
+    color: white;
+    text-decoration: none
+}
+.how-look-cont
+{
+    background-color: rgb(236, 250, 253);
+}
+.how-look-img
+{
+    border: 1px solid black;
+    width: 700px;
+    height: 500px;
+}
+.how-look-list
+{
+    list-style-type: none;   
+}
+.how-look-list-item
+{
+    margin-top: 50px;
+    margin-left: 70px;
+    border-left: 10px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    opacity: 0.5;
+    font-weight: 600;
+    cursor: pointer;
+}
+.how-look-active
+{
+    /* color: rgb(255, 216, 11); */
+    border-color: rgb(255, 216, 11);
+    font-weight: 800;
+    opacity: 1;
+}
+.how-look-list-item a
+{
+    color: black;
+}
+.how-look-header
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.how-look-content
+{
+    margin-bottom: 50px;
+}
+/*.how-row
+{
+    margin-bottom: 50px;
+}*/
+
+/* capa */
+.img-capa
+{
+    width: 600px;
+    height: 480px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    position: relative;
+    right: 800px;
+    opacity: 0;
+}
+.mainSection
+{
+    /* background-color: rgb(236, 250, 253); */
+    background-color: white;
+}
+.capa-cont
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.capa-list
+{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0;
+}
+.capa-icon
+{
+    width: 49px;
+    height: 53px;
+    margin-right: 10px;
+}
+.capa-header
+{
+    margin-bottom: 50px;
+}
+.capa-row
+{
+    margin-bottom: 50px;
+}
+
+/* about page */
+.about-header-cont
+{
+    height: 600px;
+    background-image:url(../img/aboutMain.jpg);
+    background-position: center;
+    color: white;
+    font-family: 'Kurale', serif;
+}
+.about-header-cont h1{
+    font-size: 90px;
+    text-shadow: 3px 5px 6px black;
+}
+.about-header-row
+{
+    margin-top: 250px;
+}
+.about-principle-header
+{
+    margin-top: 50px;
+}
+.about-principle-row
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.about-header-col
+{
+    margin-left: 50px;
+}
+.about-personal
+{
+    font-size: 24px;
+    font-weight: 200;
+}
+.person
+{
+    height: 250px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.person img
+{
+    height: 150px;
+    width: 150px;
+}
+.img-user {
+    width: 50px;
+    height: 50px;
+}

@@ -1,0 +1,34 @@
+﻿@model LeshBrain.ViewModels.EditRoleViewModel
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Роли";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="table-block">
+                <div class="tb-header d-flex justify-content-center">
+                    <div class="tbh-div text-center">
+                        <h3>Редактирование @Model.Name</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-block row">
+        <div class="col">
+            <div class="createrolediv">
+                <div class="form">
+                    <form method="post" asp-controller="Roles" asp-action="Edit">
+                        <div class="pb-3">
+                            <input type="hidden" asp-for="Id" />
+                            <label for="nameRole" class="form-label">Название роли</label>
+                            <input type="text" asp-for="Name" class="filt-role tbhr-input form-control" id="nameRole" aria-describedby="nameRole" required>
+                        </div>
+                        <button class="btn btn-primary rounded-pill">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@model LeshBrain.ViewModels.CreateUserViewModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Аккаунты";
+}
+<div class="scroll-block text-center">
+    <div class="user-info  container">
+        <div class="row justify-content-center">
+            <div class="form-cont col-9">
+                <div class="mt-4">
+                    <h3>Персональная информация</h3>
+                </div>
+                <form method="post" asp-controller="Account" asp-action="Create" class="form-edit">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="emailInput" class="form-label">Email</label>
+                                    <input type="email" asp-for="Email" class="tbhr-input form-control" id="emailInput" aria-describedby="emailHelp" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="nickInput" class="form-label">Телефон</label>
+                                    <input type="text" asp-for="Phone" class="tbhr-input form-control" id="nickInput" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="nameInput" class="form-label">Имя</label>
+                                    <input type="text" asp-for="Name" class="tbhr-input form-control" id="nameInput" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="surInput" class="form-label">Фамилия</label>
+                                    <input type="text" asp-for="Surname" class="tbhr-input form-control" id="surInput" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="patronInput" class="form-label">Отчество</label>
+                                    <input type="text" asp-for="Patronym" class="tbhr-input form-control" id="patronInput" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <div class="mt-5 mb-4 pas-div-h">
+                                    <h3>Информация для входа</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="nickInpit" class="form-label">UserName</label>
+                                    <input type="text" asp-for="UserName" class="tbhr-input form-control" id="nickInpit" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="pasInput" class="form-label">Пароль</label>
+                                    <input type="text" asp-for="Password" class="tbhr-input form-control" id="pasInput" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-9">
+                                <div class="roles-div">
+                                    <div class="mt-5 mb-4 pas-div-h">
+                                        <h3>Роли</h3>
+                                    </div>
+                                    <div class="form-roles">
+                                            @foreach (var role in Model.AllRoles)
+                                            {
+                                                <input type="checkbox" name="roles" value="@role.Name" @(role.Name =="anon"? "checked=\"checked\"" : "") class="mb-4"><span class="roleName">@role.Name</span><br>
+                                            }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <button type="submit" class="tb-btn btn-edit btn rounded-pill">Создать</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="user-role container">
+        <div class="row">
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</div>

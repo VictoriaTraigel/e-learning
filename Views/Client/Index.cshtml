@@ -1,0 +1,158 @@
+﻿@model LeshBrain.ViewModels.IndexAdminViewModel;
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Главная";
+}
+<div class="info-cont container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="card-main">
+                <div class="card-row container-fluid">
+                    <div class="card-row row d-flex align-items-center">
+                        <div class="col">
+                            <div>
+                                <h1>@Model.AmountClients</h1>
+                                <span>Клиентов</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <span class="card-icon las la-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card-main">
+                <div class="card-row container-fluid">
+                    <div class="card-row row d-flex align-items-center">
+                        <div class="col">
+                            <div>
+                                <h1>@Model.Tests.Count</h1>
+                                <span>Тестов</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <span class="card-icon las la-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card-main">
+                <div class="card-row container-fluid">
+                    <div class="card-row row d-flex align-items-center">
+                        <div class="col">
+                            <div>
+                                <h1>@Model.AmountCompany</h1>
+                                <span>Компаний</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <span class="card-icon las la-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card-main">
+                <div class="card-row container-fluid">
+                    <div class="card-row row d-flex align-items-center">
+                        <div class="col">
+                            <div>
+                                <h1>@Model.AmountAnons</h1>
+                                <span>Гостей</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <span class="card-icon las la-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <div class="table-block">
+                <div class="tb-header d-flex justify-content-between">
+                    <div class="tbh-div">
+                        <h3>Клиенты</h3>
+                    </div>
+                    <div class="tbh-div text-end">
+                        <form method="get" asp-controller="Account" asp-action="Clients">
+                            <button type="submit" class="tb-btn btn rounded-pill">Больше</button>
+                        </form>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Фамилия</th>
+                            <th scope="col">Отчество</th>
+                            <th scope="col">Рейтинг</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <th scope="row">@user.User.Id</th>
+                                <td>@user.User.Name</td>
+                                <td>@user.User.Surname</td>
+                                <td>@user.User.Patronym</td>
+                                <td>@user.User.Raiting</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="table-block">
+                <div class="tb-header d-flex justify-content-between">
+                    <div class="tbh-div">
+                        <h3>Тесты</h3>
+                    </div>
+                    <div class="tbh-div text-end">
+                        <form method="get" asp-controller="Test" asp-action="Index">
+                            <button class="tb-btn btn rounded-pill">Больше</button>
+                        </form>
+
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Название</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var test in Model.Tests)
+                        {
+                            <tr>
+                                <th scope="row">@test.Id</th>
+                                <td>@test.Name</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

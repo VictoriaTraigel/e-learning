@@ -1,0 +1,53 @@
+﻿@model LeshBrain.ViewModels.TestComplPassViewModel
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Прохождение теста";
+}
+<div class="scroll-block table-block container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form class="filtrLib" method="post" asp-controller="Test" asp-action="CompleteTest">
+                <div class="text-center">
+                    <h6>Вопрос #@(Model.Passer.PageNumber+1)</h6>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-10 justify-content-center">
+                            <div class="m-3">
+                                <label for="name">Вопрос</label>
+                                <input type="hidden" asp-for="Test.Id" />
+                                <input type="hidden" asp-for="Passer.PageNumber" />
+                                <input type="hidden" asp-for="CurrentResult" />
+                                <input type="text" asp-for="Test.Questions[Model.Passer.PageNumber].Content" class="form-control tbhr-input" disabled>
+                            </div>
+                            <div class="m-3">
+                                <label for="name">Ответы</label>
+                                @for(int i=0;i< Model.Test.Questions[Model.Passer.PageNumber].Answers.Count;i++)
+                                {
+                                    <div class="m-3">
+                                        <input type="text" value="@Model.Test.Questions[Model.Passer.PageNumber].Answers[i].Content" class="form-control tbhr-input" placeholder="Ответ" disabled>
+                                        <label for="isTrue">Он верный ? </label>
+                                        <input type="checkbox" name="isTrue" value="@i"/><br />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-10 justify-content-center">
+                            @if (Model.Passer.HasNextPage)
+                            {
+                                <button class="btn bg-primary text-white rounded-pill">Ответить</button>
+                            }
+                            else
+                            {
+                                <button class="btn bg-primary text-white rounded-pill">Завершить</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

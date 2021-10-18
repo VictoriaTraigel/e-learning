@@ -1,0 +1,94 @@
+﻿@model LeshBrain.ViewModels.InfoTestViewModel 
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Тесты";
+}
+<div class="scroll-block table-block container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form class="filtrLib" method="post" asp-controller="Library" asp-action="Edit">
+                <div class="text-center">
+                    <h3>@Model.Test.Name</h3>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-10 justify-content-center">
+                            <div class="m-3">
+                                <input type="hidden" asp-for="Test.Id" />
+                                <label for="name">Название</label>
+                                @if ((User.IsInRole("mentor") || User.IsInRole("admin")))
+                                {
+                                    <input type="text" asp-for="Test.Name" class="form-control tbhr-input" id="name" placeholder="Название">
+                                }
+                                else
+                                {
+                                    <input type="text" asp-for="Test.Name" class="form-control tbhr-input" id="name" placeholder="Название" disabled>
+                                }
+                            </div>
+                            <div class="m-3">
+                                <label for="opis">Описание</label>
+                                @if ((User.IsInRole("mentor") || User.IsInRole("admin")) )
+                                {
+                                    <textarea asp-for="Test.Description" name="" id="" cols="30" rows="4" itemid="opis" class="tbhr-input form-control"></textarea>
+                                }
+                                else
+                                {
+                                    <textarea asp-for="Test.Description" name="" id="" cols="30" rows="4" itemid="opis" class="tbhr-input form-control" disabled></textarea>
+                                }
+                            </div>
+                            <div class="m-3">
+                                <label for="name">Кол-во вопросов</label>
+                                @if ((User.IsInRole("mentor") || User.IsInRole("admin")))
+                                {
+                                    <input type="text" asp-for="Test.AmountQuestion" class="form-control tbhr-input" id="name" placeholder="Название">
+                                }
+                                else
+                                {
+                                    <input type="number" asp-for="Test.AmountQuestion" class="form-control tbhr-input" id="name" placeholder="Кол-во вопросов" disabled>
+                                }
+                            </div>
+                            <div class="m-3">
+                                @if ((User.IsInRole("mentor") || User.IsInRole("admin")))
+                                {
+                                    <label for="inputState">Новая категория.Текущая @Model.Test.Category.Name</label>
+                                    <select id="inputState" name="categoryID" asp-items="Model.ListCategory" class="form-control">
+                                        <option value="0">@Model.Test.Category.Name</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <h3>Категория @Model.Test.Category.Name</h3>
+                                }
+                            </div>
+                            @if ((User.IsInRole("mentor") || User.IsInRole("admin")))
+                            {
+                                <div class="m-3 text-center">
+                                    <button type="submit" class="tb-btn btn rounded-pill">Изменить</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @if ((User.IsInRole("mentor") || User.IsInRole("admin")))
+                        {
+                            <form method="post" asp-controller="Test" asp-action="Delete">
+                                <input type="hidden" name="id" value="@Model.Test.Id" />
+                                <button class="btn btn-danger">Удалить</button>
+                            </form>
+                        }
+                    </div>
+                    <div class="col">
+                        <form method="get" asp-controller="Test" asp-action="CompleteTest">
+                            <input type="hidden" name="id" value="@Model.Test.Id">
+                            <button class="btn btn-primary rounded-pill">Пройти тест</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model LeshBrain.ViewModels.MentorsSearchClientsViewModel;
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Администраторы";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="table-block">
+                <div class="tb-header d-flex justify-content-between">
+                    <div class="tbh-div">
+                        <h3>Администраторы</h3>
+                    </div>
+                </div>
+                <div class="tb-header d-flex justify-content-between">
+                    <div class="tbh-div-form">
+                        <form method="get" asp-controller="Account" asp-action="Admins">
+                            <div class="form-row">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input name="name" type="text" class="form-control tbhr-input" id="inputCity" placeholder="Имя">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input name="surname" type="text" class="form-control tbhr-input" id="inputCity" placeholder="Фамилия">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input name="patron" type="text" class="form-control tbhr-input" id="inputCity" placeholder="Отчество">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input name="phone" type="text" class="form-control tbhr-input" id="inputCity" placeholder="Телефон">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input name="Email" type="email" class="form-control tbhr-input" id="inputCity" placeholder="Email">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="tb-btn btn rounded-pill">Поиск</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Фамилия</th>
+                            <th scope="col">Отчество</th>
+                            <th scope="col">Телефон</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Рейтинг</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr class="info-row" data-value="@user.Id">
+                                <td>@user.Name</td>
+                                <td>@user.Surname</td>
+                                <td>@user.Patronym</td>
+                                <td>@user.PhoneNumber</td>
+                                <td>@user.Email</td>
+                                <td>@user.Raiting</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

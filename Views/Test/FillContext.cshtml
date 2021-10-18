@@ -1,0 +1,67 @@
+﻿@model LeshBrain.ViewModels.TestPassViewModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Тесты";
+}
+<div class="scroll-block table-block container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form class="filtrLib" method="post" asp-controller="Test" asp-action="FillContext">
+                <div class="text-center">
+                    <h3>Вы успешно создали @Model.Test.Name!!! Теперь заполним вопросы к нему...</h3>
+                    <h6>Вопрос #@Model.Passer.PageNumber</h6>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-10 justify-content-center">
+                            <div class="m-3">
+                                <label for="name">Текст вопроса</label>
+                                <input type="hidden" asp-for="Test.Id" />
+                                <input type="hidden" asp-for="Passer.PageNumber" />
+                                <input type="hidden" asp-for="Test.AmountQuestion" class="form-control tbhr-input">
+                                <input type="text" asp-for="Questions.Content" class="form-control tbhr-input" id="name" placeholder="вопрос" required>
+                            </div>
+                            <div class="m-3">
+                                <label for="name">Ответы</label>
+                                <div class="m-3">
+                                    <input type="text" name="answers" class="form-control tbhr-input" placeholder="Ответ">
+                                    <label for="isTrue">Он верный ? </label>
+                                    <input type="checkbox" name="isTrue" value="0" /><br />
+                                </div>
+                                <div class="m-3">
+                                    <input type="text" name="answers" class="form-control tbhr-input" placeholder="Ответ">
+                                    <label for="isTrue">Он верный ? </label>
+                                    <input type="checkbox" name="isTrue" value="1"/><br />
+                                </div>
+                                <div class="m-3">
+                                    <input type="text" name="answers" class="form-control tbhr-input" placeholder="Ответ">
+                                    <label for="isTrue">Он верный ? </label>
+                                    <input type="checkbox" name="isTrue" value="2"/><br />
+                                </div>
+                                <div class="m-3">
+                                    <input type="text" name="answers" class="form-control tbhr-input" placeholder="Ответ">
+                                    <label for="isTrue">Он верный ? </label>
+                                    <input type="checkbox" name="isTrue" value="3" /><br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-10 justify-content-center">
+                            @if (Model.Passer.HasNextPage)
+                            {
+                                <button class="btn bg-primary text-white rounded-pill">Сохранить и дальше</button>
+                            }
+                            else
+                            {
+                                <button class="btn bg-primary text-white rounded-pill">Сохранить и завершить</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

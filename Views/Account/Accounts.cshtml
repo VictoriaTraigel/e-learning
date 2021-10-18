@@ -1,0 +1,99 @@
+﻿@model LeshBrain.ViewModels.UserListFiltrViewModel;
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Аккаунты";
+}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="table-block">
+                    <div class="tb-header d-flex justify-content-between">
+                        <div class="tbh-div">
+                            <h3>Пользователи</h3>
+                        </div>
+                    </div>
+                    <div class="tb-header d-flex justify-content-between">
+                        <div class="tbh-div-form">
+                            <form method="get">
+                                <div class="form-row">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input name="UserName" type="text" class="form-control tbhr-input" id="inputCity" placeholder="UserName">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select name="roleId" asp-items="Model.RolesList" id="inputState" class="form-control tbhr-input">
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button type="submit" class="tb-btn btn rounded-pill">Поиск</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tbh-div text-end">
+                            <form method="get" asp-controller="Account" asp-action="Create">
+                                <button class="btn btn-primary rounded-pill">Создать</button>
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Фамилия</th>
+                                <th scope="col">Отчество</th>
+                                <th scope="col">Телефон</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">UserName</th>
+                                <th scope="col">Роль</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Users)
+                            {
+                                <tr class="info-row" data-value="@user.User.Id">
+                                    <th scope="row">@user.User.Id</th>
+                                    <td>@user.User.Name</td>
+                                    <td>@user.User.Surname</td>
+                                    <td>@user.User.Patronym</td>
+                                    <td>@user.User.PhoneNumber</td>
+                                    <td>@user.User.Email</td>
+                                    <td>@user.User.UserName</td>
+                                    <td>
+                                        @if (user.UserRoles.Count == 0)
+                                        {
+                                            <span class="badge rounded-pill bg-secondary">Нет</span>
+                                        }
+                                        else
+                                        {
+                                            foreach (var roles in user.UserRoles)
+                                            {
+                                                if (roles == "admin")
+                                                {
+                                                    <span class="badge rounded-pill bg-primary">@roles</span>
+                                                }
+                                                if (roles == "employee")
+                                                {
+                                                    <span class="badge rounded-pill bg-success">@roles</span>
+                                                }
+                                                if (roles == "mentor")
+                                                {
+                                                    <span class="badge rounded-pill bg-info">@roles</span>
+                                                }
+                                                if (roles == "anon")
+                                                {
+                                                    <span class="badge rounded-pill bg-warning">@roles</span>
+                                                }
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

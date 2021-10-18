@@ -1,0 +1,49 @@
+﻿@model LeshBrain.ViewModels.LibraryListViewModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Name"] = "Библиотека";
+}
+<div class="scroll-block table-block container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form class="filtrLib">
+                <div class="text-center">
+                    <h3>Поиск</h3>
+                </div>
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input name="name" type="text" class="form-control tbhr-input" id="inputCity" placeholder="Название">
+                        </div>
+                        <div class="col-md-4">
+                            <select name="idcategory" asp-items="Model.ListCategory" class="form-control"></select>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="tb-btn btn rounded-pill">Поиск</button>
+                        </div>
+                        @if ((User.IsInRole("mentor") || User.IsInRole("admin")))
+                        {
+                            <div class="list-group">
+                                <a asp-controller="Library" asp-action="Add" class="list-group-item list-group-item-action active" aria-current="true">Добавить</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="br-t row">
+        @foreach(var book in Model.Books)
+        {
+            <div class="book-card col-3 text-center" data-id="@book.Id">
+                <div>
+                    <i class="book-head las la-archive"></i>
+                    <div class="book-content">
+                        <h1>@book.Name</h1>
+                        <span class="book-span">@book.Category.Name</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
